@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="5dp"
+    app:cardCornerRadius="10dp"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="0dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        >
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/txt_todo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/black"
+            android:text="paliguan ang pusa"
+            android:textSize="20dp"
+            android:paddingStart="8dp" >
+
+        </com.google.android.material.checkbox.MaterialCheckBox>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/txt_todo"
+            android:layout_alignBottom="@+id/txt_todo"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/baseline_delete_outline_24">
+
+        </ImageView>
+
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

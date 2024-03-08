@@ -1,6 +1,7 @@
 package com.example.todolist;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -49,6 +50,9 @@ public class MainActivity extends AppCompatActivity implements onDialogCloseList
                 addTask.newInstances().show(getSupportFragmentManager() , addTask.TAG);
             }
         });
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new recyclerViewTouchHelper(adapter));
+        itemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
     @Override

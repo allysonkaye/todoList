@@ -27,13 +27,14 @@
         </com.google.android.material.checkbox.MaterialCheckBox>
 
         <ImageView
+            android:id="@+id/btn_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/txt_todo"
             android:layout_alignBottom="@+id/txt_todo"
             android:layout_marginEnd="0dp"
             android:layout_marginBottom="10dp"
-            android:src="@drawable/baseline_delete_outline_24">
+            android:src="@drawable/baseline_edit_24">
 
         </ImageView>
 

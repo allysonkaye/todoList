@@ -18,7 +18,6 @@ public class databaseHelper extends SQLiteOpenHelper {
     private SQLiteDatabase db;
     private static  final String DATABASE_NAME =  "TODO_DATABASE";
     private static  final String TABLE_NAME =  "TODO_TABLE";
-
     private static  final String COL_1 =  "ID";
     private static  final String COL_2 =  "TASK";
     private static  final String COL_3 =  "STATUS";
@@ -78,16 +77,19 @@ public class databaseHelper extends SQLiteOpenHelper {
         try {
             cursor = db.query(TABLE_NAME , null , null , null , null, null , null);
             if (cursor != null) {
-                do {
-                    todoModel task = new todoModel();
-                    task.setId(cursor.getInt(cursor.getColumnIndex(COL_1)));
-                    task.setTask(cursor.getString(cursor.getColumnIndex(COL_2)));
-                    task.setStatus(cursor.getInt(cursor.getColumnIndex(COL_3)));
+                if (cursor.moveToFirst()) {
 
-                    modelList.add(task);
-                } while (cursor.moveToNext());
+
+                    do {
+                        todoModel task = new todoModel();
+                        task.setId(cursor.getInt(cursor.getColumnIndex(COL_1)));
+                        task.setTask(cursor.getString(cursor.getColumnIndex(COL_2)));
+                        task.setStatus(cursor.getInt(cursor.getColumnIndex(COL_3)));
+
+                        modelList.add(task);
+                    } while (cursor.moveToNext());
+                }
             }
-
         } finally {
             db.endTransaction();
             cursor.close();

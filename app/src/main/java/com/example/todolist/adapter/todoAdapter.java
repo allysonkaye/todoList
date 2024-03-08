@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,6 +26,8 @@ public class todoAdapter extends RecyclerView.Adapter<todoAdapter.myViewHolder> 
     private MainActivity activity;
     private databaseHelper db;
 
+
+
     public todoAdapter(databaseHelper db , MainActivity activity){
         this.activity = activity;
         this.db = db;
@@ -34,6 +37,9 @@ public class todoAdapter extends RecyclerView.Adapter<todoAdapter.myViewHolder> 
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.todo_list , parent, false);
         return new myViewHolder(view);
+
+
+
     }
 
     @Override
@@ -41,6 +47,7 @@ public class todoAdapter extends RecyclerView.Adapter<todoAdapter.myViewHolder> 
         final todoModel item = list.get(position);
         holder.txt_todo.setText(item.getTask());
         holder.txt_todo.setChecked(toBoolean(item.getStatus()));
+
         holder.txt_todo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
@@ -51,6 +58,8 @@ public class todoAdapter extends RecyclerView.Adapter<todoAdapter.myViewHolder> 
                 }
             }
         });
+
+
     }
 
     public boolean toBoolean(int num) {
@@ -90,10 +99,24 @@ public class todoAdapter extends RecyclerView.Adapter<todoAdapter.myViewHolder> 
     public static class myViewHolder extends RecyclerView.ViewHolder{
 
         CheckBox  txt_todo;
+        ImageView btn_edit;
+        todoAdapter adapter;
+        RecyclerView.ViewHolder viewHolder;
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
 
             txt_todo= itemView.findViewById(R.id.txt_todo);
+            btn_edit = itemView.findViewById(R.id.btn_edit);
+
+            btn_edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v ) {
+
+                    int position = viewHolder.getLayoutPosition();
+                    adapter.editItem(position);
+                }
+            });
         }
+
     }
 }

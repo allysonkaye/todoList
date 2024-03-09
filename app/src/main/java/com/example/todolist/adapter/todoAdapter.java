@@ -89,6 +89,7 @@ public class todoAdapter extends RecyclerView.Adapter<todoAdapter.myViewHolder> 
         bundle.putString("task" , item.getTask());
 
         addTask task = new addTask();
+        task.setArguments(bundle);
         task.show(activity.getSupportFragmentManager(), task.getTag());
     }
     @Override
@@ -99,23 +100,11 @@ public class todoAdapter extends RecyclerView.Adapter<todoAdapter.myViewHolder> 
     public static class myViewHolder extends RecyclerView.ViewHolder{
 
         CheckBox  txt_todo;
-        ImageView btn_edit;
-        todoAdapter adapter;
-        RecyclerView.ViewHolder viewHolder;
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
 
             txt_todo= itemView.findViewById(R.id.txt_todo);
-            btn_edit = itemView.findViewById(R.id.btn_edit);
 
-            btn_edit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v ) {
-
-                    int position = viewHolder.getLayoutPosition();
-                    adapter.editItem(position);
-                }
-            });
         }
 
     }

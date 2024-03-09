@@ -23,10 +23,12 @@ public class recyclerViewTouchHelper extends ItemTouchHelper.SimpleCallback {
 
 
 
+
     public recyclerViewTouchHelper(todoAdapter adapter) {
-        super(0, ItemTouchHelper.LEFT);
+        super(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
         this.adapter = adapter;
     }
+
 
     @Override
     public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
@@ -57,9 +59,9 @@ public class recyclerViewTouchHelper extends ItemTouchHelper.SimpleCallback {
             AlertDialog dialog = builder.create();
             dialog.show();
         }
-//        else {
-//            adapter.editItem(position);
-//        }
+        else {
+           adapter.editItem(position);
+        }
 
     }
 
@@ -69,8 +71,8 @@ public class recyclerViewTouchHelper extends ItemTouchHelper.SimpleCallback {
     public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
 
         new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-//                .addSwipeLeftBackgroundColor(ContextCompat.getColor(adapter.getContext() , R.color.violet))
-//                .addSwipeLeftActionIcon(R.drawable.baseline_edit_24)
+                .addSwipeRightBackgroundColor(ContextCompat.getColor(adapter.getContext() , R.color.violet))
+                .addSwipeRightActionIcon(R.drawable.baseline_edit_24)
                 .addSwipeLeftBackgroundColor(Color.RED)
                 .addSwipeLeftActionIcon(R.drawable.baseline_delete_outline_24)
                 .create()
@@ -79,4 +81,5 @@ public class recyclerViewTouchHelper extends ItemTouchHelper.SimpleCallback {
 
 
     }
+
 }

@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import com.example.todolist.Model.todoModel;
 import com.example.todolist.Util.databaseHelper;
@@ -21,7 +22,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements onDialogCloseListener {
     private RecyclerView recyclerView;
-    private FloatingActionButton fab;
+    private Button fab;
     private databaseHelper db;
     private List<todoModel> list;
     private todoAdapter adapter;
